@@ -1,7 +1,9 @@
 # ESP-Temperature Sensor for Ponds or Pools using Home Assistant and MQTT Integration
-A sketch for an ESP 8266 based micro controller and an DS18B20 temperature sensor to measure the temperature of a pond or pool using Home Assistant and MQTT.
 
 ## TL;DR
+A sketch for an ESP 8266 based micro controller and an DS18B20 temperature sensor to measure the temperature of a pond or pool using Home Assistant and MQTT.
+
+![](images/schema_pond_temperature.png)
 
 ## The Software
 ### Sketch
@@ -26,18 +28,28 @@ A sketch for an ESP 8266 based micro controller and an DS18B20 temperature senso
 ````
 ##### State - Temperature
 "homeassistant/sensor/sensorPondT/state"
-
+````json
+{"temperature":14.9375}
+````
 ##### Attributes
 "homeassistant/sensor/sensorPondT/attributes"
-
+````json
+{
+ "battery_voltage":2.9455078125,
+ "battery_status":89.2578125,
+ "RSSI":-81
+}
+````
 ##### Status
 "homeassistant/sensor/sensorPondT/status"
-
+````
+online | offline 
+````
 ## The Hardware
 
 ## The Wiring
-![](images/fritzing_pond_temperature.png)
-
+![](images/pondTemperature_Steckplatine.png)
+![](images/pondTemperature_Schaltplan.png)
 ### Configure the Buck Converter
 
 ## The Configuration
@@ -50,6 +62,20 @@ A sketch for an ESP 8266 based micro controller and an DS18B20 temperature senso
 
 ### View (Example)
 ![](images/ha_preview_pond_temperature.png)
+
+```` yaml
+- type: gauge
+  entity: sensor.pond_temperature
+  name: Pond Temperature
+  unit: "°C"
+  needle: true
+  min: -5
+  max: 35
+  severity:
+    red: 0
+    yellow: 10
+    green: 20
+````
 
 
 
