@@ -187,7 +187,7 @@ void setup() {
 
   delay(1000);
   if(DEBUG) {
-    USE_SERIAL.println("Going to deep sleep for 5 minutes...");
+    USE_SERIAL.println("Going to deep sleep for 30 minutes...");
   }
   setAvailability(false);
   ESP.deepSleep(30 * 60 * 1e6); 
