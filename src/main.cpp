@@ -5,9 +5,6 @@
 #include <DallasTemperature.h>
 #include <DoubleResetDetect.h>
 
-unsigned long previousMillis = 0;   // Stores last time temperature was published
-const long interval = 10000;        // Interval at which to publish sensor readings
-
 // maximum number of seconds between resets that
 // counts as a double reset 
 #define DRD_TIMEOUT 2.0
@@ -198,27 +195,4 @@ void setup() {
 }
 
 void loop() {
-  /*
-  unsigned long currentMillis = millis();
-  if (currentMillis - previousMillis >= interval) {
-    previousMillis = currentMillis;
-  
-    sensors.requestTemperatures(); 
-    float temperatureC = sensors.getTempCByIndex(0);
-    long batteryVoltage = getBatteryVoltage(analogRead(A0));
-
-
-    if(temperatureC == -127.00) {
-      setAvailability(false);
-      USE_SERIAL.println("Failed to read from DS18B20 sensor");
-    } else {
-      publish (temperatureC, batteryVoltage);
-    }
-    digitalWrite(LED_BUILTIN, LOW);
-    if(DEBUG) {
-      USE_SERIAL.printf("Battery Voltage is: %lu mV", batteryVoltage);
-      USE_SERIAL.println();
-    }
-  }
-  */
 }
