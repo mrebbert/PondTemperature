@@ -193,7 +193,7 @@ void setup() {
     USE_SERIAL.println("Going to deep sleep for 5 minutes...");
   }
   setAvailability(false);
-  ESP.deepSleep(300 * 1e6); 
+  ESP.deepSleep(30 * 60 * 1e6); 
   delay(5000);
 }
 
