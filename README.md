@@ -8,12 +8,18 @@ A sketch for an ESP 8266 based micro controller and an DS18B20 temperature senso
 ## The Software
 ### Sketch
 
-### MQTT (Discovery)
+### MQTT
+
+I use the [Mosquitto](https://mosquitto.org/) Broker which fits my requirements perfectly. You can also find an official [Docker Image](https://hub.docker.com/_/eclipse-mosquitto) of it.
+I recommend a GUI based client like MQTT Explorer or MQTT.fx for testing purposes.
 
 #### Topics and Messages
 
+Once the sensor is running, you'll find three new topics on your broker:
+
 ##### Configuration (for MQTT Discovery)
-"homeassistant/sensor/sensorPondT/config"
+(see also: [MQTT Discovery](https://www.home-assistant.io/docs/mqtt/discovery/))
+homeassistant/sensor/sensorPondT/config
 ```` json
 {
  "device_class":"temperature",
@@ -27,11 +33,12 @@ A sketch for an ESP 8266 based micro controller and an DS18B20 temperature senso
 }
 ````
 ##### State - Temperature
-"homeassistant/sensor/sensorPondT/state"
+homeassistant/sensor/sensorPondT/state
 ````json
 {"temperature":14.9375}
 ````
 ##### Attributes
+This topic imcludes additional attributes which will be added to the configured sensor.
 "homeassistant/sensor/sensorPondT/attributes"
 ````json
 {
@@ -41,7 +48,9 @@ A sketch for an ESP 8266 based micro controller and an DS18B20 temperature senso
 }
 ````
 ##### Status
-"homeassistant/sensor/sensorPondT/status"
+This indicates if the sensor is availble or not.
+
+homeassistant/sensor/sensorPondT/status
 ````
 online | offline 
 ````
